@@ -22,8 +22,8 @@ function getRandomInt(min, max) {
     console.log("кількість згенерованих чисел " + count);
     console.log("парні числа " + evenCount);
     console.log("непарні числа " + oddCount);
-    console.log("відсоток парних чисел " + evenPercentage.toFixed(2) + "%");
-    console.log("відсоток непарних чисел " + oddPercentage.toFixed(2) + "%");
+    console.log("відсоток парних чисел " + evenPercentage.toFixed(1) + "%");
+    console.log("відсоток непарних чисел " + oddPercentage.toFixed(1) + "%");
   }
 
 
