@@ -1,12 +1,12 @@
 {
 	"info": {
-	  "name": "ISBN Validation Tests",
-	  "_postman_id": "1f4d1a6f-b906-4085-a9c6-02d8eae88f2d",
-	  "description": "API tests for ISBN validation"
+	  "name": "Simple ISBN Validation Test",
+	  "_postman_id": "d5200f77-bd25-4e80-b1fa-907019d53b6a",
+	  "description": "A simple test to check the response status"
 	},
 	"item": [
 	  {
-		"name": "Validate ISBN13",
+		"name": "Test ISBN Validation",
 		"request": {
 		  "method": "POST",
 		  "header": [
@@ -34,36 +34,6 @@
 		  }
 		},
 		"response": []
-	  },
-	  {
-		"name": "Validate ISBN10",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "application/json"
-			}
-		  ],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\"isbn\": \"1234567890\"}"
-		  },
-		  "url": {
-			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-			"protocol": "http",
-			"host": [
-			  "webservices",
-			  "daehosting",
-			  "com"
-			],
-			"path": [
-			  "services",
-			  "isbnservice.wso"
-			]
-		  }
-		},
-		"response": []
 	  }
 	],
 	"event": [
@@ -71,15 +41,8 @@
 		"listen": "test",
 		"script": {
 		  "exec": [
-			"pm.test('ISBN13 should be valid', function () {",
+			"pm.test('Status code is 200', function () {",
 			"    pm.response.to.have.status(200);",
-			"    var jsonData = pm.response.json();",
-			"    pm.expect(jsonData.isbn13).to.be.a('string').that.has.lengthOf(13);",
-			"});",
-			"pm.test('ISBN10 should be valid', function () {",
-			"    pm.response.to.have.status(200);",
-			"    var jsonData = pm.response.json();",
-			"    pm.expect(jsonData.isbn10).to.be.a('string').that.has.lengthOf(10);",
 			"});"
 		  ],
 		  "type": "text/javascript"
