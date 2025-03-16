@@ -1,12 +1,12 @@
 {
 	"info": {
-	  "name": "SOAPAPI2 Tests",
-	  "_postman_id": "8e8d0c93-bc7b-4690-91ad-e473d90f8a6c",
-	  "description": "Тести для API з перевіркою ISBN"
+	  "name": "ISBN Validation Tests",
+	  "_postman_id": "1f4d1a6f-b906-4085-a9c6-02d8eae88f2d",
+	  "description": "API tests for ISBN validation"
 	},
 	"item": [
 	  {
-		"name": "Is Valid ISBN13 Number Copy",
+		"name": "Validate ISBN13",
 		"request": {
 		  "method": "POST",
 		  "header": [
@@ -36,7 +36,7 @@
 		"response": []
 	  },
 	  {
-		"name": "Is Valid ISBN10 Number Copy",
+		"name": "Validate ISBN10",
 		"request": {
 		  "method": "POST",
 		  "header": [
