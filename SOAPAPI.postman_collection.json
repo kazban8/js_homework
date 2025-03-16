@@ -35,8 +35,7 @@
 			  "type": "text/javascript",
 			  "exec": [
 				"pm.test('Response encoding should be UTF-8', function () {",
-				"  pm.response.to.have.header('Content-Type', 'text/html');",
-				"  pm.response.to.have.header('Content-Type', 'text/xml');",
+				"  pm.response.to.have.header('Content-Type', /^text\//);",
 				"});"
 			  ]
 			}
@@ -73,8 +72,7 @@
 			  "type": "text/javascript",
 			  "exec": [
 				"pm.test('Response encoding should be UTF-8', function () {",
-				"  pm.response.to.have.header('Content-Type', 'text/html');",
-				"  pm.response.to.have.header('Content-Type', 'text/xml');",
+				"  pm.response.to.have.header('Content-Type', /^text\//);",
 				"});"
 			  ]
 			}
