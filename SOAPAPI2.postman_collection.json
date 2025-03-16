@@ -1,7 +1,7 @@
 {
 	"info": {
-	  "_postman_id": "f4e478c9-1c0b-49ed-bf7f-225fc9ecfcf5",
-	  "name": "SOAPAPI",
+	  "_postman_id": "abcd1234-5678-9101-1121-314151617181",
+	  "name": "SOAPAPI2 Tests",
 	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -9,35 +9,31 @@
 		"name": "Is Valid ISBN13 Number Copy",
 		"request": {
 		  "method": "POST",
-		  "url": {
-			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-			"protocol": "http",
-			"host": [
-			  "webservices",
-			  "daehosting",
-			  "com"
-			],
-			"path": [
-			  "services",
-			  "isbnservice.wso"
-			]
-		  },
+		  "url": "http://webservices.daehosting.com/services/isbnservice.wso",
 		  "body": {
 			"mode": "raw",
-			"raw": "ISBN=9781118845796"
-		  }
+			"raw": "<isbnRequest><isbn>9781234567890</isbn></isbnRequest>"
+		  },
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/xml"
+			}
+		  ]
 		},
 		"response": [],
 		"event": [
 		  {
 			"listen": "test",
 			"script": {
-			  "type": "text/javascript",
 			  "exec": [
-				"pm.test('Response encoding should be UTF-8', function () {",
-				"  pm.response.to.have.header('Content-Type', /^text\//);",
+				"pm.test('ISBN13 should be valid', function () {",
+				"    pm.response.to.have.status(200);",
+				"    var jsonData = pm.response.json();",
+				"    pm.expect(jsonData.isbn13).to.be.a('string').that.has.lengthOf(13);",
 				"});"
-			  ]
+			  ],
+			  "type": "text/javascript"
 			}
 		  }
 		]
@@ -46,35 +42,31 @@
 		"name": "Is Valid ISBN10 Number Copy",
 		"request": {
 		  "method": "POST",
-		  "url": {
-			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-			"protocol": "http",
-			"host": [
-			  "webservices",
-			  "daehosting",
-			  "com"
-			],
-			"path": [
-			  "services",
-			  "isbnservice.wso"
-			]
-		  },
+		  "url": "http://webservices.daehosting.com/services/isbnservice.wso",
 		  "body": {
 			"mode": "raw",
-			"raw": "ISBN=111884579X"
-		  }
+			"raw": "<isbnRequest><isbn>1234567890</isbn></isbnRequest>"
+		  },
+		  "header": [
+			{
+			  "key": "Content-Type",
+			  "value": "application/xml"
+			}
+		  ]
 		},
 		"response": [],
 		"event": [
 		  {
 			"listen": "test",
 			"script": {
-			  "type": "text/javascript",
 			  "exec": [
-				"pm.test('Response encoding should be UTF-8', function () {",
-				"  pm.response.to.have.header('Content-Type', /^text\//);",
+				"pm.test('ISBN10 should be valid', function () {",
+				"    pm.response.to.have.status(200);",
+				"    var jsonData = pm.response.json();",
+				"    pm.expect(jsonData.isbn10).to.be.a('string').that.has.lengthOf(10);",
 				"});"
-			  ]
+			  ],
+			  "type": "text/javascript"
 			}
 		  }
 		]
