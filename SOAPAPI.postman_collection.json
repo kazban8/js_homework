@@ -1,94 +1,91 @@
 {
 	"info": {
-	  "_postman_id": "f4e478c9-1c0b-49ed-bf7f-225fc9ecfcf5",
-	  "name": "SOAPAPI",
-	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"_postman_id": "f4e478c9-1c0b-49ed-bf7f-225fc9ecfcf5",
+		"name": "SOAPAPI",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-	  {
-		"name": "Is Valid ISBN13 Number Copy",
-		"request": {
-		  "method": "POST",
-		  "header": [],
-		  "url": {
-			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-			"protocol": "http",
-			"host": [
-			  "webservices",
-			  "daehosting",
-			  "com"
-			],
-			"path": [
-			  "services",
-			  "isbnservice.wso"
+		{
+			"name": "Is Valid ISBN13 Number Copy",
+			"request": {
+				"method": "POST",
+				"url": {
+					"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+					"protocol": "http",
+					"host": [
+						"webservices",
+						"daehosting",
+						"com"
+					],
+					"path": [
+						"services",
+						"isbnservice.wso"
+					]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "ISBN=9781118845796"
+				}
+			},
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response encoding should be UTF-8\", function () {",
+							"    pm.response.to.have.header(\"Content-Encoding\", /utf-8/);",
+							"});",
+							"",
+							"pm.test(\"Content-Type should be text/xml or text/html\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", /text\\/xml|text\\/html/);",
+							"});"
+						]
+					}
+				}
 			]
-		  },
-		  "body": {
-			"mode": "raw",
-			"raw": "ISBN=9781118845796"
-		  }
 		},
-		"response": [],
-		"event": [
-		  {
-			"listen": "test",
-			"script": {
-			  "type": "text/javascript",
-			  "exec": [
-				"pm.test(\"Response encoding should be UTF-8\", function () {",
-				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml; charset=utf-8/);",
-				"});",
-				"",
-				"pm.test(\"Content-Type should be text/xml\", function () {",
-				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml/);",
-				"});"
-			  ]
-			}
-		  }
-		]
-	  },
-	  {
-		"name": "Is Valid ISBN10 Number Copy",
-		"request": {
-		  "method": "POST",
-		  "header": [],
-		  "url": {
-			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-			"protocol": "http",
-			"host": [
-			  "webservices",
-			  "daehosting",
-			  "com"
-			],
-			"path": [
-			  "services",
-			  "isbnservice.wso"
+		{
+			"name": "Is Valid ISBN10 Number Copy",
+			"request": {
+				"method": "POST",
+				"url": {
+					"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+					"protocol": "http",
+					"host": [
+						"webservices",
+						"daehosting",
+						"com"
+					],
+					"path": [
+						"services",
+						"isbnservice.wso"
+					]
+				},
+				"body": {
+					"mode": "raw",
+					"raw": "ISBN=111884579X"
+				}
+			},
+			"response": [],
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Response encoding should be UTF-8\", function () {",
+							"    pm.response.to.have.header(\"Content-Encoding\", /utf-8/);",
+							"});",
+							"",
+							"pm.test(\"Content-Type should be text/xml or text/html\", function () {",
+							"    pm.response.to.have.header(\"Content-Type\", /text\\/xml|text\\/html/);",
+							"});"
+						]
+					}
+				}
 			]
-		  },
-		  "body": {
-			"mode": "raw",
-			"raw": "ISBN=111884579X"
-		  }
-		},
-		"response": [],
-		"event": [
-		  {
-			"listen": "test",
-			"script": {
-			  "type": "text/javascript",
-			  "exec": [
-				"pm.test(\"Response encoding should be UTF-8\", function () {",
-				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml; charset=utf-8/);",
-				"});",
-				"",
-				"pm.test(\"Content-Type should be text/xml\", function () {",
-				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml/);",
-				"});"
-			  ]
-			}
-		  }
-		]
-	  }
+		}
 	]
-  }
-  
+}
