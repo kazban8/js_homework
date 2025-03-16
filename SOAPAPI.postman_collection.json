@@ -1,126 +1,94 @@
 {
 	"info": {
-		"_postman_id": "5a52059b-ef34-42ec-b017-c7fa2ace3152",
-		"name": "SOAPAPI",
-		"description": "This is a collection of different SOAP APIs that are completely public and do not require any authentication, making it easier for consumers to play with and understand what APIs are all about by seeing the many different ways in which APIs can be used.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "20772513",
-		"_collection_link": "https://blue-desert-672082.postman.co/workspace/test_2025~fb6aac48-f5c6-4ec2-a23a-481e8cd5fb8b/collection/20772513-5a52059b-ef34-42ec-b017-c7fa2ace3152?action=share&source=collection_link&creator=20772513"
+	  "_postman_id": "f4e478c9-1c0b-49ed-bf7f-225fc9ecfcf5",
+	  "name": "SOAPAPI",
+	  "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
-		{
-			"name": "Is Valid ISBN13 Number Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"ISBN13 is valid\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    var jsonData = xml2Json(xmlData);",
-							"    pm.expect(jsonData['soap:Envelope']['soap:Body']['m:IsValidISBN13Response']['m:IsValidISBN13Result']).to.eql(\"true\");",
-							"});",
-							"pm.test(\"Response encoding should be UTF-8\", function () {",
-							"    pm.response.to.have.header(\"Content-Type\", /charset=utf-8/);",
-							"});",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"pm.test(\"Content-Type should be text/xml\", function () {",
-							"    pm.response.to.have.header(\"Content-Type\", /text\\/xml/);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
+	  {
+		"name": "Is Valid ISBN13 Number Copy",
+		"request": {
+		  "method": "POST",
+		  "header": [],
+		  "url": {
+			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+			"protocol": "http",
+			"host": [
+			  "webservices",
+			  "daehosting",
+			  "com"
 			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "text/xml; charset=utf-8",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN13 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>978-1-4612-9090-2</sISBN>\n    </IsValidISBN13>\n  </soap:Body>\n</soap:Envelope>"
-				},
-				"url": {
-					"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-					"protocol": "http",
-					"host": [
-						"webservices",
-						"daehosting",
-						"com"
-					],
-					"path": [
-						"services",
-						"isbnservice.wso"
-					]
-				},
-				"description": "The test is done by calculation on the first 12 digits and compare the result with the checksum number at the end. You have to pass a 13 digits number."
-			},
-			"response": []
+			"path": [
+			  "services",
+			  "isbnservice.wso"
+			]
+		  },
+		  "body": {
+			"mode": "raw",
+			"raw": "ISBN=9781118845796"
+		  }
 		},
-		{
-			"name": "Is Valid ISBN10 Number Copy",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"ISBN10 is valid\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    var jsonData = xml2Json(xmlData);",
-							"    pm.expect(jsonData['soap:Envelope']['soap:Body']['m:IsValidISBN10Response']['m:IsValidISBN10Result']).to.eql(\"true\");",
-							"});",
-							"pm.test(\"Response encoding should be UTF-8\", function () {",
-							"    pm.response.to.have.header(\"Content-Type\", /charset=utf-8/);",
-							"});",
-							"pm.test(\"Status code is 200\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"pm.test(\"Content-Type should be text/xml\", function () {",
-							"    pm.response.to.have.header(\"Content-Type\", /text\\/xml/);",
-							"});"
-						],
-						"type": "text/javascript",
-						"packages": {}
-					}
-				}
+		"response": [],
+		"event": [
+		  {
+			"listen": "test",
+			"script": {
+			  "type": "text/javascript",
+			  "exec": [
+				"pm.test(\"Response encoding should be UTF-8\", function () {",
+				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml; charset=utf-8/);",
+				"});",
+				"",
+				"pm.test(\"Content-Type should be text/xml\", function () {",
+				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml/);",
+				"});"
+			  ]
+			}
+		  }
+		]
+	  },
+	  {
+		"name": "Is Valid ISBN10 Number Copy",
+		"request": {
+		  "method": "POST",
+		  "header": [],
+		  "url": {
+			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+			"protocol": "http",
+			"host": [
+			  "webservices",
+			  "daehosting",
+			  "com"
 			],
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "text/xml; charset=utf-8",
-						"type": "text"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <IsValidISBN10 xmlns=\"http://webservices.daehosting.com/ISBN\">\n      <sISBN>0-19-852663-6</sISBN>\n    </IsValidISBN10>\n  </soap:Body>\n</soap:Envelope>"
-				},
-				"url": {
-					"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-					"protocol": "http",
-					"host": [
-						"webservices",
-						"daehosting",
-						"com"
-					],
-					"path": [
-						"services",
-						"isbnservice.wso"
-					]
-				},
-				"description": "The test is done by calculation on the first 9 digits and compare the result with the checksum number at the end. You have to pass a 10 digits number or 8 digits and an X."
-			},
-			"response": []
-		}
+			"path": [
+			  "services",
+			  "isbnservice.wso"
+			]
+		  },
+		  "body": {
+			"mode": "raw",
+			"raw": "ISBN=111884579X"
+		  }
+		},
+		"response": [],
+		"event": [
+		  {
+			"listen": "test",
+			"script": {
+			  "type": "text/javascript",
+			  "exec": [
+				"pm.test(\"Response encoding should be UTF-8\", function () {",
+				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml; charset=utf-8/);",
+				"});",
+				"",
+				"pm.test(\"Content-Type should be text/xml\", function () {",
+				"    pm.response.to.have.header(\"Content-Type\", /text\\/xml/);",
+				"});"
+			  ]
+			}
+		  }
+		]
+	  }
 	]
-}
+  }
+  
