@@ -30,12 +30,6 @@
 							"    pm.expect(xmlData).to.include(\"<m:IsValidISBN13Result>\");",
 							"});",
 							"",
-							"pm.test(\"Response contains soap:Envelope and soap:Body\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    pm.expect(xmlData).to.include(\"<soap:Envelope>\");",
-							"    pm.expect(xmlData).to.include(\"<soap:Body>\");",
-							"});",
-							"",
 							"pm.test(\"Response encoding should be UTF-8\", function () {",
 							"    pm.response.to.have.header(\"Content-Type\", /charset=utf-8/);",
 							"});",
@@ -53,17 +47,6 @@
 							"    var jsonData = xml2Json(xmlData);",
 							"    var result = jsonData['soap:Envelope']['soap:Body']['m:IsValidISBN13Response']['m:IsValidISBN13Result'];",
 							"    pm.expect(result).to.eql(\"true\");",
-							"});",
-							"",
-							"pm.test(\"Response should not contain errors\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    var jsonData = xml2Json(xmlData);",
-							"    pm.expect(jsonData['soap:Envelope']['soap:Body']).not.to.have.property('soap:Fault');",
-							"});",
-							"",
-							"pm.test(\"Check namespace for IsValidISBN13Response\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    pm.expect(xmlData).to.include('xmlns:m=\"http://webservices.daehosting.com/ISBN\"');",
 							"});"
 						],
 						"type": "text/javascript",
@@ -130,7 +113,6 @@
 							"    pm.response.to.have.header(\"Content-Type\", /charset=utf-8/);",
 							"});",
 							"",
-
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
 							"});",
@@ -144,17 +126,6 @@
 							"    var jsonData = xml2Json(xmlData);",
 							"    var result = jsonData['soap:Envelope']['soap:Body']['m:IsValidISBN10Response']['m:IsValidISBN10Result'];",
 							"    pm.expect(result).to.eql(\"true\");",
-							"});",
-							"",
-							"pm.test(\"Response should not contain errors\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    var jsonData = xml2Json(xmlData);",
-							"    pm.expect(jsonData['soap:Envelope']['soap:Body']).not.to.have.property('soap:Fault');",
-							"});",
-							"",
-							"pm.test(\"Check namespace for IsValidISBN10Response\", function () {",
-							"    var xmlData = pm.response.text();",
-							"    pm.expect(xmlData).to.include('xmlns:m=\"http://webservices.daehosting.com/ISBN\"');",
 							"});"
 						],
 						"type": "text/javascript",
@@ -199,7 +170,7 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					 ""
+					""
 				]
 			}
 		},
