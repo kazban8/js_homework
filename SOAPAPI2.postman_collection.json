@@ -1,53 +1,39 @@
 {
-	"info": {
-	  "name": "Simple ISBN Validation Test",
-	  "_postman_id": "d5200f77-bd25-4e80-b1fa-907019d53b6a",
-	  "description": "A simple test to check the response status"
-	},
-	"item": [
-	  {
-		"name": "Test ISBN Validation",
-		"request": {
-		  "method": "POST",
-		  "header": [
-			{
-			  "key": "Content-Type",
-			  "value": "application/json"
-			}
-		  ],
-		  "body": {
-			"mode": "raw",
-			"raw": "{\"isbn\": \"9781234567890\"}"
-		  },
-		  "url": {
-			"raw": "http://webservices.daehosting.com/services/isbnservice.wso",
-			"protocol": "http",
-			"host": [
-			  "webservices",
-			  "daehosting",
-			  "com"
-			],
-			"path": [
-			  "services",
-			  "isbnservice.wso"
-			]
-		  }
-		},
-		"response": []
-	  }
-	],
-	"event": [
-	  {
-		"listen": "test",
-		"script": {
-		  "exec": [
-			"pm.test('Status code is 200', function () {",
-			"    pm.response.to.have.status(200);",
-			"});"
-		  ],
-		  "type": "text/javascript"
-		}
-	  }
-	]
-  }
-  
+    "info": {
+        "_postman_id": "e0a9e0ff-2b1e-4f30-9d3d-f5b58cd11b61",
+        "name": "ISBN Validation API Tests",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Validate ISBN",
+            "request": {
+                "url": {
+                    "raw": "http://webservices.daehosting.com/services/isbnservice.wso",
+                    "protocol": "http",
+                    "host": [
+                        "webservices",
+                        "daehosting",
+                        "com"
+                    ],
+                    "path": [
+                        "services",
+                        "isbnservice.wso"
+                    ]
+                },
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/xml"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "<isbnRequest><isbn>9781234567890</isbn></isbnRequest>"
+                }
+            },
+            "response": []
+        }
+    ]
+}
